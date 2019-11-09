@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header></Header>
+  
+    <!-- <router-link to="/home">Go to Foo</router-link>
+    <router-link to="/editor">Go to Bar</router-link> -->
+ 
+  <router-view></router-view>
+  <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue';
+// import Home from './components/Home.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Header,
+    Footer,
+    // HelloWorld,
+    // Home
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url("http://demo.productionready.io/main.css");
 </style>
