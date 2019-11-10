@@ -73,7 +73,7 @@ export default {
         return;
       }
       api.prototype.post(`/users/login`, user).then(user => {
-        localStorage.setItem("token", JSON.stringify(user.user.token));
+        localStorage.setItem("user", JSON.stringify(user.user));
         router.replace({ path: "/home" });
         if (user.errors) {
           this.errors = "email or password is invalid";

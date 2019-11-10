@@ -103,9 +103,8 @@ export default {
       if (this.$v.$invalid) {
         return;
       }
-
       api.prototype.post(`/users`, user).then(user => {
-        localStorage.setItem("token", JSON.stringify(user.token));
+        localStorage.setItem("user", JSON.stringify(user));
         router.replace({ path: "/home" });
         if (user.errors) {
           for (let i in user.errors) {
