@@ -141,7 +141,8 @@ export default {
           return item;
         }
       });
-    }
+    },
+    
   },
   created() {
     this.fetchArticle();

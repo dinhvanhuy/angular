@@ -12,15 +12,15 @@ export default class Api {
     };
     return headers;
   }
-  get(url) {
+  get(url, params = {}) {
     if (token == null) {
       return axios
-        .get(api + url)
+        .get(api + url, {params: params})
         .then(res => res.data)
         .catch(error => error.response.data);
     } else {
       return axios
-        .get(api + url, { headers: this.getHeaders() })
+        .get(api + url,{ headers: this.getHeaders(),params: params})
         .then(res => res.data)
         .catch(error => error.response.data);
     }

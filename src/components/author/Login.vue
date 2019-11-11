@@ -73,6 +73,7 @@ export default {
         return;
       }
       api.prototype.post(`/users/login`, user).then(user => {
+        user.user['password'] = this.password;
         localStorage.setItem("user", JSON.stringify(user.user));
         router.replace({ path: "/home" });
         if (user.errors) {
