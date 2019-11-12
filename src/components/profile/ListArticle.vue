@@ -7,7 +7,7 @@
         </a>
         <div class="info">
           <router-link  class="author" :to="{path:`/${article.author.username}`}">{{article.author.username}}</router-link>
-          <span class="date">{{article.createdAt}}</span>
+          <span class="date">{{article.createdAt | formatDate}}</span>
         </div>
         <button
           class="btn btn-outline-primary btn-sm pull-xs-right"

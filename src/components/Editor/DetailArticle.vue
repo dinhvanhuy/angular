@@ -10,7 +10,7 @@
           </a>
           <div class="info">
             <a href class="author">{{article.author.username}}</a>
-            <span class="date">{{article.createdAt}}</span>
+            <span class="date">{{article.createdAt | formatDate}}</span>
           </div>
           <button v-show="!isShow" class="btn btn-sm btn-outline-secondary" @click="handleFollow()">
             <i class="ion-plus-round"></i>
@@ -59,7 +59,7 @@
           </a>
           <div class="info">
             <a href class="author">{{article.author.username}}</a>
-            <span class="date">{{article.createdAt}}</span>
+            <span class="date">{{article.createdAt | formatDate}}</span>
           </div>
 
           <button class="btn btn-sm btn-outline-secondary"

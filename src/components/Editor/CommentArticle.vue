@@ -25,7 +25,7 @@
           </a>
           &nbsp;
           <a href class="comment-author">{{comment.author.username}}</a>
-          <span class="date-posted">{{comment.createdAt}}</span>
+          <span class="date-posted">{{comment.createdAt | formatDate}}</span>
            <span class="mod-options" @click="removeComments(comment.id)">
             <i class="ion-trash-a" v-if="comment.author.username == username">Delete</i>
           </span>
