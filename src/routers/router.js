@@ -6,6 +6,7 @@ import Register from '../components/author/Register.vue';
 import Login from '../components/author/Login.vue';
 import DetailArticle from '../components/editor/DetailArticle.vue';
 import Setting from '../components/setting/setting.vue';
+import Profile from '../components/profile/Profile.vue';
 
 Vue.use(VueRouter);
 
@@ -46,12 +47,17 @@ const router = new VueRouter({
             path:'/settings',
             name: 'settings',
             component: Setting,
+        },
+        {
+            path:'/:username',
+            name:'myarticle',
+            component: Profile
+        },
+        {
+            path:'/:username/favorites',
+            name:'favorites',
+            component: Profile
         }
-        // {
-        //     path:'detail',
-        //     name:' detail',
-        //     component: CommentArticle
-        // }
     ]
 })
 

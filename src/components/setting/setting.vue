@@ -40,6 +40,12 @@
               </button>
           </fieldset>
         </form>
+         <hr>
+        <button 
+          class="btn btn-outline-danger"
+          @click="onLogout()">
+          Or click here to logout
+        </button>
       </div>
 
     </div>
@@ -81,6 +87,10 @@ export default {
           path: `/home`
         })
       })
+    },
+    onLogout() {
+      localStorage.clear();
+      this.$$route.replace({path: `/home`})
     }
   },
   created() {

@@ -16,7 +16,7 @@
                 <a
                   class="nav-link curpoint"
                   :class="{active: type==1}"
-                  v-show="isView"
+                  v-if="isView"
                   @click="getYourFeed()"
                 >Your Feed</a>
               </li>
@@ -39,15 +39,15 @@
             :key="article.updatedAt"
           >
             <div class="article-meta">
-              <a>
+              <router-link :to="{path: `/${article.author.username}`}">
                 <img :src="article.author.image" />
-              </a>
+              </router-link>
               <div class="info">
-                <a class="author">{{article.author.username}}</a>
+                <router-link class="author" :to="{path:`${article.author.username}`}">{{article.author.username}}</router-link>
                 <span class="date">{{article.updatedAt}}</span>
               </div>
               <button
-                class="btn  btn-sm pull-xs-right"
+                class="btn btn-sm pull-xs-right"
                 :class="{'btn-primary':article.favorited, 'btn-outline-primary': !article.favorited }"
                 @click="updateFavirote(article.slug, index)"
               >
@@ -58,7 +58,7 @@
             <a href class="preview-link">
               <h1>{{article.title}}</h1>
               <p>{{article.body}}</p>
-              <span>Read more...</span>
+              <router-link :to="{path: `/article/${article.slug}`}"><span>Read more...</span></router-link>
             </a>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default {
 
     getAuth() {
       const user = localStorage.getItem("user");
-      if (user) {
+      if (user != null) {
         this.isView = true;
       }
     }
@@ -219,7 +219,11 @@ export default {
 
   created() {
     this.getAuth();
-    this.getYourFeed(this.index);
+    if (this.isView) {
+      this.getYourFeed(this.index);
+    } else {
+      this.getArticleGlobal(this.index);
+    }
     this.getTags();
   }
 };
