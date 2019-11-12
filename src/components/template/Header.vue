@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import EventBus from '../../services/event-bus';
 export default {
   name: "Header",
   data() {
@@ -56,6 +57,16 @@ export default {
   },
   created() {
     this.getUser();
+  },
+  mounted() {
+    EventBus.$on('logout', (isShow) =>{
+      this.isShow =  isShow;
+    });
+    EventBus.$on('login', (isShow) =>{
+      console.log(isShow);
+      this.isShow =  isShow;
+    });
+
   }
 };
 </script>

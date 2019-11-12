@@ -14,11 +14,13 @@
               &nbsp;
               {{following}} {{profile.username}}
             </button>
-             <button class="btn btn-sm btn-outline-secondary action-btn" v-if="isShow">
+             <router-link class="btn btn-sm btn-outline-secondary action-btn" v-if="isShow"
+             :to="{path:`/settings`}"
+             >
               <i class="ion-plus-round"></i>
               &nbsp;
               Edit Profile Setting
-            </button>
+             </router-link>
           </div>
         </div>
       </div>

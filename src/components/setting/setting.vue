@@ -54,6 +54,7 @@
 </template>
 <script>
 import api from '../../services/api';
+import EventBus from '../../services/event-bus';
 export default {
   name: "Setting",
   data() {
@@ -90,7 +91,8 @@ export default {
     },
     onLogout() {
       localStorage.clear();
-      this.$$route.replace({path: `/home`})
+      EventBus.$emit('logout', true);
+      this.$router.replace({path: `/home`})
     }
   },
   created() {

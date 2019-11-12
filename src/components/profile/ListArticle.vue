@@ -6,7 +6,7 @@
           <img :src="article.author.image" />
         </a>
         <div class="info">
-          <a href class="author">{{article.author.username}}</a>
+          <router-link  class="author" :to="{path:`/${article.author.username}`}">{{article.author.username}}</router-link>
           <span class="date">{{article.createdAt}}</span>
         </div>
         <button
@@ -20,7 +20,7 @@
       <a href class="preview-link">
         <h1>{{article.title}}</h1>
         <p>{{article.body}}</p>
-        <span>Read more...</span>
+       <router-link :to="{path:`/article/${article.slug}`}"> <span>Read more...</span></router-link>
       </a>
     </div>
     <Pagination v-if="articlesCount> 0" :articlesCounts="articlesCount"></Pagination>
@@ -42,7 +42,8 @@ export default {
       listArticle: [],
       type: 1,
       username: this.userName,
-      articlesCount: 0
+      articlesCount: 0,
+      isShow: false,
     };
   },
 

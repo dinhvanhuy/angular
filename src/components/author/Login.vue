@@ -41,6 +41,8 @@
 import api from "../../services/api";
 import { required } from "vuelidate/lib/validators";
 import router from "../../routers/router";
+import EventBus from '../../services/event-bus';
+
 
 export default {
   name: "Login",
@@ -75,6 +77,7 @@ export default {
       api.prototype.post(`/users/login`, user).then(user => {
         user.user['password'] = this.password;
         localStorage.setItem("user", JSON.stringify(user.user));
+        EventBus.$emit('login', false);
         router.replace({ path: "/home" });
         if (user.errors) {
           this.errors = "email or password is invalid";
